@@ -149,6 +149,733 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tang-630.github.io/2020/12/23/Vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tang">
+      <meta itemprop="description" content="仅仅是记录">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/23/Vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Vim学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-23 20:33:16 / 修改时间：20:35:07" itemprop="dateCreated datePublished" datetime="2020-12-23T20:33:16+08:00">2020-12-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>整理自PegasusWang的教程 <a target="_blank" rel="noopener" href="https://www.imooc.com/learn/1129">https://www.imooc.com/learn/1129</a></p>
+</blockquote>
+<h2 id="1-初识Vim"><a href="#1-初识Vim" class="headerlink" title="1.初识Vim"></a>1.初识Vim</h2><h3 id="1-下载与安装"><a href="#1-下载与安装" class="headerlink" title="1. 下载与安装"></a>1. 下载与安装</h3><ul>
+<li>Linux/Unix（mac）自带Vim，终端直接输入<code>vim</code>即可进入</li>
+<li>Windows下可以下载<code>Gvim</code>安装体验</li>
+</ul>
+<h3 id="2-简单使用"><a href="#2-简单使用" class="headerlink" title="2.简单使用"></a>2.简单使用</h3><ul>
+<li><p>命令行直接输入<code>vim</code>命令进入vim [此时显示vim的一些介绍]</p>
+</li>
+<li><p>进入后默认是normal模式。不能输入文本，但可以输入命令</p>
+</li>
+<li><p>输入<code>:q</code>退出vim（即quit）</p>
+</li>
+<li><p>进入编辑模式，即可开始编辑内容：[右下角可见当前模式为INSERT]</p>
+<ul>
+<li><p>按<code>i</code>：在当前字母前插入内容（即insert）</p>
+</li>
+<li><p>按<code>a</code>：在当前字母后进行插入内容（即append）</p>
+</li>
+<li><p>按<code>o</code>：在当前行的下一行插入内容（即open a line below）</p>
+<p>  其对应大写表示不同命令：</p>
+<ul>
+<li><code>A</code>：在当前行末尾插入（即append after line）</li>
+<li><code>I</code>：在当前行首插入（即insert before line）</li>
+<li><code>O</code>：在当前行上一行插入（即open a line above）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按<code>Esc</code>回到normal模式</p>
+</li>
+<li><p>输入:<code>w</code>保存（write，写入）</p>
+</li>
+<li><p>输入<code>:q!</code>：不保存退出</p>
+<ul>
+<li>或按下<code>ZQ</code>（大写）不保存退出</li>
+</ul>
+</li>
+<li><p>输入:<code>wq</code>保存并退出</p>
+<ul>
+<li>或按下<code>ZZ</code>（大写）保存退出</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Vim模式"><a href="#3-Vim模式" class="headerlink" title="3.Vim模式"></a>3.Vim模式</h3><h4 id="1-normal模式（默认）"><a href="#1-normal模式（默认）" class="headerlink" title="1.normal模式（默认）"></a>1.normal模式（默认）</h4><ul>
+<li><p>大部分时间我们都在进行浏览而不是编辑。因此vim将normal模式作为默认模式。</p>
+</li>
+<li><p>在normal模式下，vim提供了很多命令去操作、移动文本。</p>
+</li>
+</ul>
+<h4 id="2-insert模式（插入模式）"><a href="#2-insert模式（插入模式）" class="headerlink" title="2.insert模式（插入模式）"></a>2.insert模式（插入模式）</h4><ul>
+<li><p>在插入模式下和普通编辑器别无两样，可以直接编辑文本。</p>
+</li>
+<li><p>使用：</p>
+<ul>
+<li><p><code>a</code>    /    <code>A</code></p>
+</li>
+<li><p><code>i</code>   /    <code>I</code></p>
+</li>
+<li><p><code>o</code>   /    <code>O</code></p>
+<p>进入插入模式</p>
+</li>
+</ul>
+</li>
+<li><p>使用<code>Esc</code>退出插入模式到normal模式</p>
+</li>
+</ul>
+<h4 id="3-command模式（命令模式）"><a href="#3-command模式（命令模式）" class="headerlink" title="3.command模式（命令模式）"></a>3.command模式（命令模式）</h4><ul>
+<li><p>命令模式下可以执行Vim命令</p>
+</li>
+<li><p>normal模式下输入<code>:</code>后执行命令</p>
+<ul>
+<li>比如<code>:w</code>保存，<code>:q</code>退出</li>
+</ul>
+</li>
+<li><p>常用命令</p>
+<ul>
+<li><code>:e!</code>：禁止保存所有更改</li>
+<li><code>:e &#123;filename&#125;</code>：打开并编辑文件</li>
+<li><code>:source &#123;filepath&#125;</code>：保存路径下的文件且立即生效</li>
+<li><code>:set nu</code>：设置行号（即set number）</li>
+<li><code>:vs</code>：竖分屏（即vertical split）</li>
+<li><code>:sq</code>：横分屏（即split）</li>
+<li><code>:%s/java/python/g</code>：将“java”全局替换为“python”（%表示所有文本，s表示替换，/g表示全局global）</li>
+<li><code>:syntax on</code>：代码语法高亮</li>
+<li><code>:set hls</code>：搜索结果高亮</li>
+<li><code>g</code>+&lt;<code>ctrl+g</code>&gt;：字数统计</li>
+</ul>
+</li>
+<li><p>命令模式下可以按tab键代码补全</p>
+</li>
+</ul>
+<h4 id="4-visual模式（可视模式）"><a href="#4-visual模式（可视模式）" class="headerlink" title="4.visual模式（可视模式）"></a>4.visual模式（可视模式）</h4><ul>
+<li><p>一般用来块状选择文本，对文本进行批量操作</p>
+</li>
+<li><p>normal模式下使用</p>
+<ul>
+<li><p>使用<code>v</code>选择字母</p>
+</li>
+<li><p>使用<code>V</code>选择行（大写）</p>
+<p>进入visual模式[左下角可见当前模式为VISUAL]</p>
+<p>​        使用<code>ctrl</code>+<code>v</code>进行方块选择[左下角可见当前模式为VISUAL BLOCK]</p>
+</li>
+</ul>
+</li>
+<li><p>对选中的文本进行批量操作：</p>
+<ul>
+<li>如<code>d</code>删除（delete），<code>y</code>复制（yank），<code>p</code>粘贴（paste）</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-插入模式编辑技巧"><a href="#4-插入模式编辑技巧" class="headerlink" title="4.插入模式编辑技巧"></a>4.插入模式编辑技巧</h3><h4 id="1-快速纠错"><a href="#1-快速纠错" class="headerlink" title="1.快速纠错"></a>1.快速纠错</h4><ul>
+<li><code>ctrl</code>+<code>h</code>：删除上一个字符</li>
+<li><code>ctrl</code>+<code>w</code>：删除上一个单词</li>
+<li><code>ctrl</code>+<code>u</code>：删除当前行</li>
+</ul>
+<p>以上快捷键可以用在很多地方，比如终端</p>
+<p>{</p>
+<p>​    终端下还有其它有用的快捷键：</p>
+<pre><code>* `ctrl`+`a`：快速移动到开头
+* `ctrl`+`e`：快速移动到结尾
+* `ctrl`+`b`：光标前移
+* `ctrl`+`f`：光标后移</code></pre>
+<p>}</p>
+<h4 id="2-快速切换insert和normal模式"><a href="#2-快速切换insert和normal模式" class="headerlink" title="2.快速切换insert和normal模式"></a>2.快速切换insert和normal模式</h4><ul>
+<li>使用<code>ctrl</code>+<code>c</code>代替<code>Esc</code>（可能会中断某些插件）<ul>
+<li>使用<code>ctrl</code>+<code>[</code>代替<code>Esc</code>（推荐）</li>
+</ul>
+</li>
+<li>使用<code>gi</code>快速跳转到最后一次编辑的位置并进入插入模式</li>
+</ul>
+<h3 id="5-快速移动"><a href="#5-快速移动" class="headerlink" title="5.快速移动"></a>5.快速移动</h3><p><strong>在normal模式下：</strong></p>
+<h4 id="1-移动方向"><a href="#1-移动方向" class="headerlink" title="1.移动方向"></a>1.移动方向</h4><p>按下以下四个键对应不同的移动方向</p>
+<ul>
+<li><code>h</code>：←</li>
+<li><code>j</code>：↓</li>
+<li><code>k</code>：↑</li>
+<li><code>l</code>：→</li>
+</ul>
+<h4 id="2-单词间移动"><a href="#2-单词间移动" class="headerlink" title="2.单词间移动"></a>2.单词间移动</h4><ul>
+<li><code>w</code>/<code>W</code>：移动到下一个word/WORD开头</li>
+<li><code>e</code>/<code>E</code>：移动到下一个word/WORD结尾</li>
+<li><code>b</code>/<code>B</code>：回到上一个word/WORD开头（即backword）<ul>
+<li>word是指：以非空白符分割的单词</li>
+<li>WORD是指：以空白符分割的单词</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-行间搜索移动"><a href="#3-行间搜索移动" class="headerlink" title="3.行间搜索移动"></a>3.行间搜索移动</h4><p>在一行内搜索一个字符并移动到该字符</p>
+<ul>
+<li><code>f&#123;char&#125;</code>：移动到char字符上</li>
+<li><code>t&#123;char&#125;</code>：移动到char的前一个字符</li>
+<li><code>F&#123;char&#125;</code>：反向搜前边的char字符<ul>
+<li>如果有多个匹配字符<ul>
+<li><code>;</code>（分号）：跳转到下一个匹配字符</li>
+<li><code>,</code>（逗号）：跳转到上一个匹配字符</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-水平移动"><a href="#4-水平移动" class="headerlink" title="4.水平移动"></a>4.水平移动</h4><p>快速移动到行首/行尾</p>
+<ul>
+<li><code>0</code>：移动到行首的第一个字符</li>
+<li><code>$</code>：移动到行尾</li>
+<li><code>^</code>：移动到第一个非空白字符<ul>
+<li>可用<code>0w</code>代替</li>
+</ul>
+</li>
+<li><code>g_</code>：移动到行尾非空白字符</li>
+</ul>
+<h4 id="5-垂直移动"><a href="#5-垂直移动" class="headerlink" title="5.垂直移动*"></a>5.垂直移动*</h4><p>在句子和段落间移动</p>
+<ul>
+<li><code>(</code> / <code>)</code>：在句子间移动</li>
+<li><code>&#123;</code> / <code>&#125;</code>：在段落间移动<ul>
+<li>帮助<ul>
+<li>例如<code>:help(</code>：查看<code>(</code>的使用帮助</li>
+</ul>
+</li>
+<li>可以用插件easy-motion来帮助移动</li>
+</ul>
+</li>
+</ul>
+<h4 id="6-页面移动"><a href="#6-页面移动" class="headerlink" title="6.页面移动"></a>6.页面移动</h4><p>常见：</p>
+<ul>
+<li><code>gg</code>/<code>G</code>：移动到文件开头/结尾</li>
+<li><code>ctrl</code>+<code>o</code>：快速返回到上一个位置</li>
+<li><code>H</code>/<code>M</code>/<code>L</code>：跳转到屏幕开头（Head）/中间（Middle）/结尾（Lower）</li>
+<li><code>ctrl</code>+<code>u</code>/<code>ctrl</code>+<code>f</code>：往上翻页（upword）/往下翻页（forward）</li>
+<li><code>zz</code>：当前位置置于屏幕中心</li>
+<li><code>zt</code>：当前位置置于屏幕顶端</li>
+</ul>
+<h3 id="6-快速增删改查"><a href="#6-快速增删改查" class="headerlink" title="6.快速增删改查"></a>6.快速增删改查</h3><h4 id="1-增加字符"><a href="#1-增加字符" class="headerlink" title="1.增加字符"></a>1.增加字符</h4><p>进入插入模式即可</p>
+<h4 id="2-快速删除"><a href="#2-快速删除" class="headerlink" title="2.快速删除"></a>2.快速删除</h4><p>normal模式下：</p>
+<ul>
+<li><code>x</code>：快速删除一个字符</li>
+<li><code>d</code>：配合文本对象快速删除一个单词<ul>
+<li>如：<ul>
+<li><code>dw</code>（delete word）：删除单词，默认同<code>daw</code><ul>
+<li><code>daw</code>（delete around word）：删除单词，连同单词周围的空格</li>
+<li><code>diw</code>：删除单词，不包括单词周围的空格</li>
+</ul>
+</li>
+<li><code>dd</code>：删除当前行</li>
+<li><code>dt)</code>（delete to ) ）：删除直到右括号，即删除 括号内的内容<ul>
+<li><code>)</code>可以换成其它符号</li>
+</ul>
+</li>
+<li><code>d$</code>：快速删除到行尾</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>d</code>和<code>x</code>可以搭配数字来执行多次</p>
+<ul>
+<li><p>数字+命令：表示多次执行命令</p>
+</li>
+<li><p><code>2dd</code>：删除两行</p>
+</li>
+<li><p><code>4x</code>：删除四个字符</p>
+</li>
+</ul>
+<h4 id="3-快速修改"><a href="#3-快速修改" class="headerlink" title="3.快速修改"></a>3.快速修改</h4><p>常用：</p>
+<ul>
+<li><code>u</code>（undo）：撤销</li>
+<li><code>ctrl</code>+<code>r</code>：取消撤销</li>
+<li><code>r</code>（replace）：替换一个字符<ul>
+<li><code>ra</code>：将选定字符修改为a</li>
+</ul>
+</li>
+<li><code>R</code>：逐个往下替换字符</li>
+<li><code>s</code>（substitute）：替换（删除）当前字符并进入插入模式<ul>
+<li>搭配数字使用：<ul>
+<li><code>4s</code>：删除4个字符并进入插入模式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>S</code>：替换（删除）当前行并进入插入模式</li>
+<li><code>c</code>（change）：配合文本对象进行快速修改<ul>
+<li>如：<ul>
+<li><code>caw</code>（change a word）：删除一个单词并进入插入模式</li>
+<li><code>ct&quot;</code>：删除到”并进入插入模式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>C</code>：删除当前行并进入插入模式</li>
+</ul>
+<h4 id="4-查询"><a href="#4-查询" class="headerlink" title="4.查询"></a>4.查询</h4><ul>
+<li><code>/</code>/<code>?</code>：向后/向前搜索</li>
+<li><code>n</code>/<code>N</code>：跳转到下一个/上一个匹配</li>
+<li><code>*</code>/<code>#</code>：当前单词的前向/后向匹配（即找到下一个相同的单词）</li>
+</ul>
+<h3 id="7-搜索替换"><a href="#7-搜索替换" class="headerlink" title="7.搜索替换"></a>7.搜索替换</h3><h4 id="1-替换命令"><a href="#1-替换命令" class="headerlink" title="1.替换命令"></a>1.替换命令</h4><ul>
+<li><p>substitute命令：查找并替换文本，支持正则表达式</p>
+</li>
+<li><p>命令格式：[中括号中表示补全助记单词/对象，下同]</p>
+<p>  <code>:[range]s[ubstitute]/&#123;pattern&#125;/&#123;string&#125;/[flags]</code></p>
+<ul>
+<li>range：操作范围<ul>
+<li><code>:10, 20</code>表示第10-20行</li>
+<li><code>%</code>表示全部</li>
+</ul>
+</li>
+<li>pattern：要替换的文本</li>
+<li>string：替换后的文本</li>
+<li>flags：标志位<ul>
+<li>g（global）：全局范围内执行</li>
+<li>c（confirm）：替换前确认或拒绝修改</li>
+<li>n（number）：返回匹配项数目</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<ul>
+<li><code>:1,6 s/print/printf/gc</code>：将1-6行的“print”替换为“printf”且替换前确认</li>
+<li><code>:% s/print//n</code>：统计文本中“print”的数量</li>
+</ul>
+</li>
+<li><p>正则表达式示例</p>
+<ul>
+<li><code>:% s/\&lt;string1\&gt;/string2/g</code>：精确匹配string1</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-替换多个文件中的匹配"><a href="#2-替换多个文件中的匹配" class="headerlink" title="2.替换多个文件中的匹配"></a>2.替换多个文件中的匹配</h4><p>推荐使用插件完成</p>
+<h3 id="8-多文件操作"><a href="#8-多文件操作" class="headerlink" title="8.多文件操作"></a>8.多文件操作</h3><h4 id="1-多文件操作相关概念"><a href="#1-多文件操作相关概念" class="headerlink" title="1.多文件操作相关概念"></a>1.多文件操作相关概念</h4><ul>
+<li>Buffer：打开的一个文件的内存缓冲区<ul>
+<li>vim打开一个文件后会加载文件内容到缓冲区</li>
+<li>对文件的修改都是针对内存中的缓冲区做修改，并不直接保存到文件中</li>
+<li>执行<code>:w</code>时才将修改内容写入文件</li>
+<li><strong>Buffer之间的切换：</strong><ul>
+<li><code>:ls</code>：列举当前缓冲区</li>
+<li><code>:bn</code>：跳转到第n个缓冲区</li>
+<li><code>:bpre</code>/<code>:bnext</code>/<code>:bfirst</code>/<code>:blast</code>：跳转到前一个/后一个/第一个/最后一个缓冲区</li>
+<li><code>:b buffer_name</code>：直接跳转 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Window：Buffer可视化的分割区域<ul>
+<li>一个缓冲区可以分割成多个窗口<ul>
+<li>对一个窗口内容的修改在多个窗口中生效</li>
+</ul>
+</li>
+<li>每个窗口可以打开不同的缓冲区</li>
+<li>窗口分割：（w即window）<ul>
+<li><code>ctrl</code>+<code>w</code>+<code>s</code>/<code>:sp</code>：水平分割<ul>
+<li><code>:sp &#123;filename&#125;</code>：水平分割打开新文件</li>
+</ul>
+</li>
+<li><code>ctrl</code>+<code>w</code>+<code>v</code>/<code>:vs</code>：垂直分割<ul>
+<li><code>:vs &#123;filename&#125;</code>：垂直分割打开新文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>每个窗口可以被无限分割</li>
+<li><img src="Vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.assets/image-20200605162041410.png" alt="image-20200605162041410"></li>
+<li>窗口切换：（<code>ctrl</code>+<code>w</code>作为前缀）<ul>
+<li><code>ctrl</code>+<code>w</code>+<code>w</code>：窗口循环切换</li>
+<li><code>ctrl</code>+<code>w</code>+<code>h</code>：切换到左边的窗口</li>
+<li><code>ctrl</code>+<code>w</code>+<code>j</code>：切换到下边的窗口</li>
+<li><code>ctrl</code>+<code>w</code>+<code>k</code>：切换到上边的窗口</li>
+<li><code>ctrl</code>+<code>w</code>+<code>l</code>：切换到右边的窗口</li>
+<li><code>ctrl</code>+<code>w</code>+<code>H</code>/<code>ctrl</code>+<code>w</code>+<code>J</code>/<code>ctrl</code>+<code>w</code>+<code>K</code>/<code>ctrl</code>+<code>w</code>+<code>L</code>：将当前窗口与左边/下边/上边/右边的窗口对调位置</li>
+</ul>
+</li>
+<li>窗口重排*<ul>
+<li><code>ctrl</code>+<code>w</code>+<code>=</code>：设置所有窗口等宽、等高</li>
+<li><code>ctrl</code>+<code>w</code>+<code>_</code>：最大化活动窗口高度</li>
+<li><code>ctrl</code>+<code>w</code>+<code>|</code>：最大化活动窗口宽度</li>
+<li><code>[N]</code>+<code>ctrl</code>+<code>w</code>+<code>_</code>/<code>[N]</code>+<code>ctrl</code>+<code>w</code>+<code>|</code>：把活动窗口的高度设置为[N]行/[N]列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tab：组织窗口成为一个工作区*<ul>
+<li>将窗口分组<ul>
+<li>Tab类似于一系列窗口的容器</li>
+</ul>
+</li>
+<li>使用场景：<ul>
+<li>一个tab全用来编辑Java文件</li>
+<li>另外一个tab全用来编辑python文件</li>
+<li>等等</li>
+</ul>
+</li>
+<li>Tab操作：<ul>
+<li><code>:table[dit] &#123;filename&#125;</code>：在新标签页中打开文件</li>
+<li><code>:tabc[lose]</code>：关闭当前标签页以及其中的所有窗口</li>
+<li><code>:tabo[only]</code>：只保留活动标签页，关闭所有其它标签页</li>
+<li><code>ctrl</code>+<code>w</code>+<code>T</code>：把当前窗口移动到一个新的标签页</li>
+</ul>
+</li>
+<li>Tab切换操作：<ul>
+<li><code>:tabn[ext] &#123;N&#125;</code>：切换到编号为N的标签页<ul>
+<li>normal模式下：<code>&#123;N&#125;gt</code></li>
+</ul>
+</li>
+<li><code>:tabn[ext]</code>：切换到下一个标签页<ul>
+<li>normal模式下：<code>gt</code></li>
+</ul>
+</li>
+<li><code>:tabp[revious]</code>：切换到上一个标签页<ul>
+<li>normal模式下：<code>gT</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用ctrlp插件和nerdtree快速操作多个文件</li>
+</ul>
+<h3 id="9-vim的text-object（文本对象）"><a href="#9-vim的text-object（文本对象）" class="headerlink" title="9.vim的text object（文本对象）"></a>9.vim的text object（文本对象）</h3><h4 id="1-text-object"><a href="#1-text-object" class="headerlink" title="1.text object"></a>1.text object</h4><ul>
+<li>vim将单词、句子、段落等抽象成为了对象</li>
+<li>操作文本对象比操作单个字符高效</li>
+</ul>
+<h4 id="2-使用文本对象"><a href="#2-使用文本对象" class="headerlink" title="2.使用文本对象"></a>2.使用文本对象</h4><ul>
+<li>命令格式：<ul>
+<li><code>[number]&lt;command&gt;[text object]</code><ul>
+<li>number：次数</li>
+<li>command：命令<ul>
+<li><code>d</code>（delete）</li>
+<li><code>c</code>（change）</li>
+<li><code>y</code>（yank）等等</li>
+</ul>
+</li>
+<li>text object：文本对象<ul>
+<li><code>w</code>：单词</li>
+<li><code>s</code>：句子</li>
+<li><code>p</code>：段落</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>操作<code>w</code>/<code>s</code>/<code>p</code>常用命令：<ul>
+<li><code>iw</code>：inner word，选中当前单词<ul>
+<li><code>viw</code>：<code>v</code>进入选择模式，<code>iw</code>选中当前单词</li>
+</ul>
+</li>
+<li><code>aw</code>：around word，选中当前单词以及单词后的空格</li>
+<li>将<code>w</code>换成<code>s</code>/<code>p</code>即对句子/段落进行操作</li>
+</ul>
+</li>
+<li>操作括号内的内容常用命令：<ul>
+<li><code>i(</code>或<code>i)</code>：选中<code>( )</code>中的内容</li>
+<li><code>a(</code>或<code>a)</code>：选中<code>( )</code>以及其中的内容</li>
+<li>其它也算作括号的符号替换命令中的符号即可<ul>
+<li><code>&lt;</code>、<code>&gt;</code></li>
+<li><code>&#123;</code>、<code>&#125;</code></li>
+<li><code>&quot;</code>、<code>&quot;</code></li>
+<li><code>&#39;</code>、<code>&#39;</code>等等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-复制粘贴与寄存器的使用"><a href="#10-复制粘贴与寄存器的使用" class="headerlink" title="10.复制粘贴与寄存器的使用"></a>10.复制粘贴与寄存器的使用</h3><h4 id="1-normal模式下的复制粘贴"><a href="#1-normal模式下的复制粘贴" class="headerlink" title="1.normal模式下的复制粘贴"></a>1.normal模式下的复制粘贴</h4><ul>
+<li><code>y</code>（yank）/<code>p</code>（put）：复制/粘贴</li>
+<li><code>d</code>/<code>p</code>（put）：剪切/粘贴</li>
+<li>流程：<ul>
+<li><code>v</code>命令选中，<code>y</code>复制，<code>p</code>粘贴</li>
+</ul>
+</li>
+<li>配合文本对象<ul>
+<li><code>yiw</code>：复制一个单词</li>
+<li><code>yy</code>：复制一行</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-insert模式下的复制粘贴"><a href="#2-insert模式下的复制粘贴" class="headerlink" title="2.insert模式下的复制粘贴"></a>2.insert模式下的复制粘贴</h4><ul>
+<li><code>:set aotoindent</code>：自动缩进<ul>
+<li>粘贴代码时会出现缩进错乱</li>
+<li>因此vim的insert模式下粘贴代码应该这样做（如果设置了aotoindent的话）：<ul>
+<li><code>:set paste</code></li>
+<li>粘贴</li>
+<li><code>:set nopaste</code></li>
+</ul>
+</li>
+<li>有插件可以解决这样的问题</li>
+<li>或者在normal模式下粘贴系统剪贴板的内容</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-vim的寄存器"><a href="#3-vim的寄存器" class="headerlink" title="3.vim的寄存器"></a>3.vim的寄存器</h4><ul>
+<li>vim操作的是寄存器而不是系统剪贴板</li>
+<li><code>d</code>删除和<code>y</code>的内容都放到了默认的无名寄存器中</li>
+<li>字符调换技巧：<ul>
+<li><code>x</code>删除一个字符（存放在默认无名寄存器中）</li>
+<li><code>p</code>粘贴</li>
+</ul>
+</li>
+<li><strong>使用寄存器</strong>：<ul>
+<li><code>&quot;&#123;register&#125;</code>前缀用于引用指定寄存器，不指定则为默认无名寄存器。寄存器名通常指定为a-z，例：<ul>
+<li><code>&quot;ayiw</code>：复制一个单词到寄存器a中</li>
+<li><code>&quot;bdd</code>：删除当前行到寄存器b中</li>
+</ul>
+</li>
+<li><code>:reg &#123;register_name&#125;</code>：查看寄存器中的内容</li>
+</ul>
+</li>
+<li>常见寄存器<ul>
+<li><code>&quot;&quot;</code>：引用默认无名寄存器</li>
+<li><code>&quot;0</code>：复制专用寄存器。用<code>y</code>命令复制文本的同时，会将内容同时拷贝到复制寄存器0</li>
+<li><code>&quot;+</code>：系统剪贴板寄存器。在复制前加上<code>&quot;+</code>复制到系统剪贴板<ul>
+<li><code>:set clipboard=unnamed</code>：可以直接粘贴系统剪贴板的内容</li>
+</ul>
+</li>
+<li><code>&quot;.</code>：上次插入的文本</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-批量操作（宏操作）"><a href="#11-批量操作（宏操作）" class="headerlink" title="11.批量操作（宏操作）"></a>11.批量操作（宏操作）</h3><h4 id="1-什么是宏（macro）"><a href="#1-什么是宏（macro）" class="headerlink" title="1.什么是宏（macro）"></a>1.什么是宏（macro）</h4><ul>
+<li>一系列命令的集合</li>
+<li>使用宏<strong>录制</strong>一系列操作，然后<strong>回放</strong>这些操作</li>
+<li>宏用于将一系列的命令用在多行文本上</li>
+</ul>
+<h4 id="2-使用宏"><a href="#2-使用宏" class="headerlink" title="2.使用宏"></a>2.使用宏</h4><p>normal模式下，使用<code>q</code>：录制/结束录制</p>
+<ul>
+<li>使用<code>q&#123;register&#125;</code>录制并将命令保存到寄存器<ul>
+<li>例如：<code>qa</code>将录制的命令保存到寄存器a中[左下角显示<code>recoding @a</code>]</li>
+</ul>
+</li>
+<li>使用<code>@&#123;register&#125;</code>回放寄存器中的命令</li>
+</ul>
+<h4 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h4><p>需求：将30个url用双引号包括起来：</p>
+<ul>
+<li>使用<code>qa</code>开始录制</li>
+<li>给第一个url加上双引号</li>
+<li>使用<code>q</code>退出录制</li>
+<li>在剩余行中回放录制的宏<ul>
+<li>每一行使用<code>@a</code>依旧需要重复，可以用命令完成：<ul>
+<li>按<code>v</code>进入选择模式，选择要操作的行</li>
+<li>按<code>Esc</code>/<code>ctrl</code>+<code>[</code>进入命令模式，输入<code>:normal @a</code>并按下回车即可</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>不使用宏也可较为快速的解决：</p>
+<ul>
+<li>按<code>V</code>选择第一行进入选择模式</li>
+<li>按<code>G</code>选择到文本末尾</li>
+<li>进入命令模式，输入<code>:normal I &quot;</code>在所有行首添加引号</li>
+<li>输入<code>:</code>再按下<code>ctrl</code>+<code>p</code>执行上一个命令，将<code>I</code>改成<code>A</code>即在所有行尾加上引号即可</li>
+</ul>
+<p>但是宏的应用场景更加广。</p>
+<h3 id="12-内容补全"><a href="#12-内容补全" class="headerlink" title="12.内容补全"></a>12.内容补全</h3><h4 id="1-补全的内容"><a href="#1-补全的内容" class="headerlink" title="1.补全的内容"></a>1.补全的内容</h4><ul>
+<li>单词、文件名</li>
+<li>代码中的函数名、变量名</li>
+</ul>
+<h4 id="2-常见的补全"><a href="#2-常见的补全" class="headerlink" title="2.常见的补全"></a>2.常见的补全</h4><ul>
+<li><p>补全单词（前缀匹配的方式）：<code>ctrl</code>+<code>n</code>或<code>ctrl</code>+<code>p</code></p>
+<p>  在跳出的选择中：</p>
+<ul>
+<li><code>ctrl</code>+<code>p</code>选择前一个（previous）</li>
+<li><code>ctrl</code>+<code>n</code>选择下一个（next）</li>
+</ul>
+</li>
+<li><p>补全文件名：<code>ctrl</code>+<code>x</code>  +  <code>ctrl</code>+<code>f</code></p>
+<p>  在跳出的选择中：</p>
+<ul>
+<li><code>ctrl</code>+<code>p</code>选择前一个（previous）</li>
+<li><code>ctrl</code>+<code>n</code>选择下一个（next）</li>
+</ul>
+</li>
+<li><p>补全代码：<code>ctrl</code>+<code>x </code>  +  <code>ctrl</code>+<code>o</code>[事实上<code>ctrl</code>+<code>x </code>  +  <code>ctrl</code>+<code>o</code>是全能（Omni）补全，补全代码需要开启文件类型检查（命令模式下输入<code>:filetype on</code>，并安装插件]</p>
+</li>
+</ul>
+<h3 id="13-更换配色主题"><a href="#13-更换配色主题" class="headerlink" title="13.更换配色主题"></a>13.更换配色主题</h3><p>命令模式下：</p>
+<ul>
+<li><code>:colorscheme</code>：显示当前主题配色，默认是default</li>
+<li><code>:colorscheme 空格</code>+&lt;<code>ctrl</code>+<code>d</code>&gt;：显示可用配色</li>
+<li><code>:colorscheme 配色名</code>：修改配色</li>
+</ul>
+<p>自带的配色方案不满意可以自行下载</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/flazz/vim-colorschemes">github vim配色仓库</a></p>
+<h3 id="14-小结"><a href="#14-小结" class="headerlink" title="14.小结"></a>14.小结</h3><ul>
+<li>初学者从裸的vim开始学习，从0起步掌握vim的操作，形成肌肉记忆</li>
+<li>能够无障碍使用vim后再进行下面的学习。</li>
+</ul>
+<h2 id="2-编写Vim配置"><a href="#2-编写Vim配置" class="headerlink" title="2.编写Vim配置"></a>2.编写Vim配置</h2><h3 id="1-vim配置是什么"><a href="#1-vim配置是什么" class="headerlink" title="1.vim配置是什么"></a>1.vim配置是什么</h3><ul>
+<li>vim里面有很多常用的设置，比如设置行号、代码高亮等等</li>
+<li>在命令模式下的临时设置不能持久化</li>
+<li>vimrc提供了一种持久化配置的方式，可以进行自定义配置</li>
+</ul>
+<h3 id="2-编写vim配置文件"><a href="#2-编写vim配置文件" class="headerlink" title="2.编写vim配置文件"></a>2.编写vim配置文件</h3><h4 id="1-生成vimrc"><a href="#1-生成vimrc" class="headerlink" title="1.生成vimrc"></a>1.生成vimrc</h4><p>.vimrc是一个隐藏的配置文件，需要手动生成。</p>
+<ul>
+<li>Linux/Unix：vim ~/.vimrc[在当前用户的主目录下生成.vimrc文件，.表示隐藏文件]</li>
+<li>windows：vim $MYVIMRC，设置环境变量编辑配置文件</li>
+</ul>
+<p>具体方式百度即可。</p>
+<h4 id="2-vim配置的内容"><a href="#2-vim配置的内容" class="headerlink" title="2.vim配置的内容"></a>2.vim配置的内容</h4><ul>
+<li>配置内容包括：<ul>
+<li>常用设置：如<code>:set nu</code>设置行号等等</li>
+<li>常用的vim映射：如<code>noremap &lt;leader&gt;w :w&lt;cr&gt;</code>保存文件等等</li>
+<li>自定义的vimscript函数（高手必备）</li>
+<li>vim插件配置</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-常用设置的配置"><a href="#3-常用设置的配置" class="headerlink" title="3.常用设置的配置"></a>3.常用设置的配置</h4><p>将常用配置写到.vimrc里，避免每次打开vim都需要重新设置，可以参考别人的配置。</p>
+<ul>
+<li><code>:h option-list</code>：查找所有可以设置的选项</li>
+</ul>
+<h4 id="4-vim映射配置"><a href="#4-vim映射配置" class="headerlink" title="4.vim映射配置"></a>4.vim映射配置</h4><ul>
+<li><p>vim映射是将一个操作映射到另一个操作上</p>
+</li>
+<li><p>映射主要用于：</p>
+<ul>
+<li>修改目前的按键设置</li>
+<li>不同模式下自定义快捷键、组合键</li>
+<li>自定义命令实现外部命令的调用</li>
+</ul>
+</li>
+<li><p>使用映射可以按照个人意愿定制vim</p>
+</li>
+</ul>
+<h5 id="1-基本映射"><a href="#1-基本映射" class="headerlink" title="1.基本映射"></a>1.基本映射</h5><ul>
+<li>基本映射指的是normal模式下的映射<ul>
+<li>实现映射<ul>
+<li>使用<code>map</code>就可以实现映射。例如<ul>
+<li><code>:map - x</code>：即将<code>x</code>映射到<code>-</code>，按下<code>-</code>就会删除字符</li>
+<li><code>:map &lt;space&gt; viw</code>：按下空格选中整个单词</li>
+<li><code>:map &lt;c-d&gt; dd</code>：使用<code>ctrl+d</code>执行<code>dd</code>删除一行</li>
+</ul>
+</li>
+<li>加入vimrc文件即可实现持久化</li>
+</ul>
+</li>
+<li>删除映射<ul>
+<li>使用<code>unmap</code>，例如<ul>
+<li><code>:unmap -</code>：取消上面对<code>-</code>的映射</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-模式映射"><a href="#2-模式映射" class="headerlink" title="2.模式映射"></a>2.模式映射</h5><ul>
+<li>vim的normal/visual/insert模式都可以定义映射</li>
+<li>nmap/vmap/imap分别定义在normal/visual/insert模式下的映射，例如<ul>
+<li><code>:vmap \ U</code>：在visual模式下选中文本按<code>\</code>转换为大写（在vim中<code>u</code> / <code>U</code>分别表示大小写）</li>
+<li><code>:imap &lt;c-d&gt; &lt;Esc&gt;ddi</code>：在insert模式下使用<code>ctrl+d</code>删除一行（实际上是先进入normal模式使用<code>dd</code>删除一行，再回到insert模式）</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h5><ul>
+<li>上述映射方式存在递归映射的问题：<ul>
+<li><code>:nmap - x</code></li>
+<li><code>:nmap \ -</code></li>
+<li>此时在normal模式下按下<code>\</code>，会删除一个字符，而不是<code>-</code>默认的功能</li>
+</ul>
+</li>
+<li>递归映射的风险：<ul>
+<li>一个插件中映射了同一个按键的不同行为，就会导致其中一个行为失效</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-非递归映射"><a href="#4-非递归映射" class="headerlink" title="4.非递归映射"></a>4.非递归映射</h5><ul>
+<li>*map对应的非递归映射为：noremap/nnoremap/vnoremap/inoremap（即Non-recursive）</li>
+<li>任何时候都优先选择非递归映射</li>
+</ul>
+<h5 id="5-实例"><a href="#5-实例" class="headerlink" title="5.实例"></a>5.实例</h5><ol>
+<li><p>设置leader键：</p>
+<ul>
+<li><p>leader键用于作为组合键之一使用，用于扩充快捷键</p>
+</li>
+<li><p><code>let mapleader=&quot;,&quot;</code>：将逗号设置为leader键</p>
+</li>
+<li><p>常用leader键是逗号/空格</p>
+</li>
+</ul>
+</li>
+<li><p>设置映射</p>
+<ul>
+<li>例如：<ul>
+<li><code>inoremap jj <Esc>`^</code>：在插入模式下按下<code>jj</code>进入normal模式<ul>
+<li><code>`^</code>：保持光标位置不变</li>
+</ul>
+</li>
+<li><code>inoremap &lt;leader&gt;w &lt;Esc&gt;:w&lt;cr&gt;</code>：在插入模式按下leader键和w键进行保存<ul>
+<li><code>inoremap</code>：在insert模式下（i）的非递归（Non-recursive）映射（map）</li>
+<li><code>&lt;cr&gt;</code>：回车</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="5-插件配置"><a href="#5-插件配置" class="headerlink" title="5.插件配置"></a>5.插件配置</h4><p>现代化的vim可以通过插件管理器安装插件，让你的vim更好用。</p>
+<ul>
+<li>插件可以无限扩充vim的功能</li>
+</ul>
+<h4 id="6-vim脚本配置"><a href="#6-vim脚本配置" class="headerlink" title="6.vim脚本配置*"></a>6.vim脚本配置*</h4><ul>
+<li>vimscript：vim的脚本语言</li>
+<li>vim插件主要基于vimscript编写（其它编程语言也可以编写vim插件）</li>
+<li>对vim的完全掌握控制通过vimscript实现。</li>
+<li>正常的使用vim不需要掌握</li>
+</ul>
+<h2 id="3-插件安装和使用"><a href="#3-插件安装和使用" class="headerlink" title="3.插件安装和使用"></a>3.插件安装和使用</h2><h2 id="4-与时俱进的Vim"><a href="#4-与时俱进的Vim" class="headerlink" title="4.与时俱进的Vim"></a>4.与时俱进的Vim</h2><h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tang-630.github.io/2020/12/03/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -282,9 +1009,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -398,7 +1129,7 @@ password();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共75字</span>
+  <span class="post-count">博客全站共4.6k字</span>
 </div>
         
 
